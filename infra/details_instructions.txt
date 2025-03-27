@@ -1,0 +1,24 @@
+copy the code into /opt/pizza_site on a serverr
+Install everything in infra/dependencies.txt
+i.e. cd /opt/pizza_site, then run the lines one by one, or turn the file into an .sh file and run it.
+
+when asked for a password for mysql, set the password for mysql as -pa55w0rd
+
+After the installations finish:
+
+mysql -uroot -ppa55w0rd
+    CREATE SCHEMA pizza_db;
+    GRANT ALL PRIVILEGES ON pizza_db.* To 'pizza-admin'@'%' IDENTIFIED BY 'pa55w0rd';
+    exit
+
+sudo cp infra/nginx.conf /etc/nginx/nginx.conf
+sudo rm /etc/nginx/sites-available/default
+sudo cp  infra/pizza_site.conf /etc/nginx/sites-available/pizza_site.conf
+sudo ln -s /etc/nginx/sites-available/pizza_site.conf /etc/nginx/sites-enabled/pizza_site.conf
+sudo service nginx restart
+
+sudo vim /etc/apache2/ports.conf
+    edit line 5 to be: “Listen 8080”
+sudo service apache2 restart
+sudo cp infra/pizza-site-multi.conf /etc/init/pizza-site-multi.conf
+sudo service pizza-site-multi start

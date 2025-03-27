@@ -1,0 +1,18 @@
+<div>
+    <div class="list-group-item dish" ng-repeat="sideDetails in side.sides">
+        <h3></h3>
+
+        <div ng-show="sideDetails.image_url">
+            <div class="img-wrap">
+                <img ng-src="{[ sideDetails.image_url ]}" alt="{[sideDetails.food_name]}" />
+            </div>
+            <div class="productData">
+                <p class="product_name">{[sideDetails.food_name]}</p><br role="presentation" />
+                <p class="product_price">${[sideDetails.price_in_dollars]}.<span class="small_cash">00</span></p>
+            </div>
+        </div>
+
+        <input hidden ng-attr-id="{['side_discount_' + sideDetails.id]}" name="percent_discount" value="0">
+        <button class="btn buyNowButton" ng-click="side.orderSideById(sideDetails.id)">Buy Now</button>
+    </div>
+</div>

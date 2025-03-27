@@ -1,0 +1,35 @@
+<div class="modal fade" id="pizza_login_dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="לסגירה">X</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div id="pizza_login_dialog_body" action="/login" method="post">
+                    <div class="form-group">
+                        <label for="login_username">Username</label>
+                        <input type="text" class="form-control" id="login_username" placeholder="Enter your username"
+                            name="user_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password">Password</label>
+                        <input type="password" class="form-control" id="login_password"
+                            placeholder="Enter your password" name="password">
+                    </div>
+                    <input type="hidden" class="form-control" name="submit" value="Login">
+                    <input type="hidden" class="form-control" name="next" value="">
+                    <input type="hidden" class="form-control" name="remember" value="y">
+                    <input type="hidden" class="form-control" name="csrf_token" id="login_csrf_token"
+                        value="{{ csrf_token }}">
+                    <button class="mainButton" id="login_but_submit">Login</button>
+
+                    <div class="change-dialog-button">
+                        Not a member yet? <button onclick="switchDialog('pizza_login_dialog', 'pizza_register_dialog')"
+                            type="button" class="buttonRegister">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

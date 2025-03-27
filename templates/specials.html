@@ -1,0 +1,21 @@
+<div>
+    <input hidden ng-attr-id="pizza_had_your_special" id="order_had_special">
+    <div class="list-group-item dish" ng-repeat="pizzaDetails in special.specials">
+        <h3></h3>
+        <div ng-show="pizzaDetails.image_url">
+            <div class="img-wrap">
+                <img ng-src="{[ pizzaDetails.image_url ]}" alt="{[pizzaDetails.food_name]}" />
+            </div>
+
+            <div class="productData">
+                <p class="product_name">{[pizzaDetails.food_name]}</p><br role="presentation" />
+                <p class="product_price">${[pizzaDetails.price_in_dollars]}.<span class="small_cash">00</span></p>
+            </div>
+        </div>
+
+
+        <input hidden ng-attr-id="{['pizza_discount_' + pizzaDetails.id]}" name="percent_discount" value="0">
+        <button class="btn buyNowButton" ng-click="special.orderSpecialById(pizzaDetails.id)">Buy Now</button>
+
+    </div>
+</div>

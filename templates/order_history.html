@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1 style="color:white">Order History</h1>
+{% for order in order_history %}
+<div class="list-group-item orderHistory">
+    <div class="history_name">{{ order.food_name }} </div>
+    <div class="history_date">{{ order.date.strftime("%d/%m/%Y, %H:%M:%S") }}</div>
+    <div class="history_money"><em class="pull-right">${{ order.price_in_dollars }}</em></div>
+</div>
+{% endfor %}
+{% endblock %}

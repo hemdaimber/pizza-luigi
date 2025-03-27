@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div id="server_message"></div>
+<ul id="tab_headers" class="nav nav-tabs" role="tablist">
+    <li role="presentation" id="pizzas_li" class="active"><a href="#pizzas_tab" aria-controls="pizzas" role="tab"
+            data-toggle="tab">App Coupon
+        </a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="pizzas_tab" pizza-mobile></div>
+</div>
+{% endblock %}

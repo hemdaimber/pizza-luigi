@@ -1,0 +1,31 @@
+<ul id="tab_headers" class="nav nav-tabs" role="tablist">
+    <li role="presentation" id="pizzas_li" class="active dish_li"><a href="#pizzas_tab" aria-controls="pizzas"
+            role="tab" data-toggle="tab">Our Pizza</a></li>
+    <li role="presentation" id="sides_li" class="dish_li"><a href="#sides_tab" aria-controls="sides" role="tab"
+            data-toggle="tab">Sides</a></li>
+    <li role="presentation" id="specials_li" class="dish_li"><a href="#specials_tab" aria-controls="specials" role="tab"
+            data-toggle="tab">Specials</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="pizzas_tab" pizza>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="sides_tab" side>
+    </div>
+    <div role="tabpanel" class="tab-pane active" id="specials_tab" special>
+    </div>
+</div>
+
+<script>
+    console.log("hellpo world");
+    var qry = getQueryStringData('enableSpecial');
+    console.log('qry is ' + qry);
+    if (!qry) {
+        $("#specials_tab").remove();
+        $("#specials_li").remove();
+    } else {
+        $("#pizzas_tab").removeClass('active');
+        $("#specials_tab").addClass('active');
+        $("#pizzas_li").removeClass('active');
+        $("#specials_li").addClass('active');
+    }
+</script>

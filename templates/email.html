@@ -1,0 +1,49 @@
+<table class="email_table">
+    <tr>
+        <td class="left_column" height="10%" width="30%" valign="top">
+            <div class="email_headers" ng-repeat="email in email.emails">>
+                <div ng-if="email.unread" class="email_unread email_header" id="email_{{ email.id }}_header"
+                    onclick="toggleEmailBody(email.id, true)">
+                    <a href="/messages/{{ email.id }}"><span>{{ email.from_user }}</span> ::
+                        <span>{{ email.subject }}</span></a>
+                </div>
+                <div ng-switch-default class="email_header" id="email_{{ email.id }}_header"
+                    onclick="toggleEmailBody(email.id, false)">
+                    <a href="/messages/{{ email.id }}"><span>{{ email.from_user }}</span> ::
+                        <span>{{ email.subject }}</span></a>
+                </div>
+                <hr />
+            </div>
+        </td>
+        <td valign="top" class="right_column email_body" id="message_id_{{ requested_message.id }}_body">
+            <oneEmail></oneEmail>
+        </td>
+    </tr>
+</table>
+<hr />
+<table class="email_table">
+    <tr>
+        <td width="30"></td>
+        <td width="40">
+            <h4 style="color: #ffffff">Compose a new message:</h4>
+        </td>
+        <td width="30"></td>
+    </tr>
+    <tr style="color: #ffffff">
+        <td width="30"></td>
+        <td width="40">
+            <form action="/messages" method="get" class="compose_form">
+                <div class="form-group">
+                    <label for="new_message_to">To:</label>
+                    <input type="text" class="form-control" name="to_user" id="new_message_to">
+                    <label for="new_message_subject">Subject:</label>
+                    <input type="text" class="form-control" name="subject" id="new_message_subject">
+                    <label for="new_message_body">Message</label>
+                    <textarea class="form-control" name="message_text" id="new_message_body" rows="20"></textarea>
+                </div>
+                <button id="send_email_but" class="btn btn-success">Send!</button>
+            </form>
+        </td>
+        <td width="30"></td>
+    </tr>
+</table>

@@ -1,0 +1,49 @@
+<!doctype html>
+
+<head>
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <label for="server_password">password:</label> <input type="password" id="server_password" /><br
+        role="presentation" />
+    <button id="shutdown">block/unblock server</button>
+    <button id="restartdb">DB COMPLETE WIPE</button>
+    <div>server status: <span id="server_status">{{server_status}}</span></div>
+    <script>
+        var passwordElement = document.getElementById("server_password");
+        var shutdown = document.getElementById("shutdown");
+        var restartdb = document.getElementById("restartdb");
+        var serverStatus = document.getElementById("server_status");
+
+        shutdown.addEventListener('click', function () {
+            var req = new XMLHttpRequest();
+            req.addEventListener("load", function () { alert(this.responseText); getServerStatus() });
+            req.open("POST", "/adminify/shutdown", true);
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+            req.send("password=" + passwordElement.value);
+        });
+
+        restartdb.addEventListener('click', function () {
+            serverstate = serverStatus.textContent;
+            if (serverstate != "DOWN") {
+                var extra = "I recommend to block the server before wiping DB, just in case (i.e. the other button)";
+            }
+            var areYouSure = confirm("this will restart the DB completly. " + extra);
+            if (areYouSure) {
+                var req = new XMLHttpRequest();
+                req.addEventListener("load", function () { alert(this.responseText); });
+                req.open("POST", "/adminify/restartdb", true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+                req.send("password=" + passwordElement.value);
+            }
+        });
+
+        function getServerStatus() {
+            var req = new XMLHttpRequest();
+            req.addEventListener("load", function () { serverStatus.textContent = this.responseText; });
+            req.open("GET", "/adminify/status", true);
+            req.send("");
+        }
+    </script>
+</body>
