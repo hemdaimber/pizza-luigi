@@ -16,4 +16,4 @@ app.config['SECURITY_FLASH_MESSAGES'] = False
 
 app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
 app.config['SECURITY_SEND_PASSWORD_CHANGE_EMAIL'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://pizza-admin:pa55w0rd@mysql/pizza_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:z10mz10m@127.0.0.1/pizza_db'

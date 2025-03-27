@@ -24,22 +24,28 @@ This code base contains an exact replica of the Pizza Luigi site source code, al
 
 Make sure you have the following installed:
 
+- MySQL (local, with Hilma's development credentials)
 - Docker ([installation guide](https://docs.docker.com/engine/install/))
-- Docker Compose ([installation guide](https://docs.docker.com/compose/install/))
 
 ### Running the Site
 
-Open a terminal in the root of this codebase and run the following command:
+Create a new MySQL database named `pizza_db`.
+
+The first time you run the site, you have to build the image:
 
 ```sh
-docker-compose up --build
+docker build -t pizza-luigi .
 ```
 
-The command should take a few moments to run.
+To expose the site run:
+
+```sh
+docker run --network="host" pizza-luigi
+```
 
 **That's it!**
 
-The Pizza Luigi site is now exposed at the URL http://localhost:8090/.
+The Pizza Luigi site is now exposed at the URL http://localhost:8080/.
 
 ---
 
